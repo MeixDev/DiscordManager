@@ -73,3 +73,30 @@ build/
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Miscellaneous
+example/.DS_Store
+example/.atom/
+example/.buildlog/
+example/.history
+example/.svn/
+
+# IntelliJ related
+example/*.iml
+example/*.ipr
+example/*.iws
+example/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+example/.dart_tool/
+example/.flutter-plugins
+example/.flutter-plugins-dependencies
+example/.packages
+example/.pub-cache/
+example/.pub/
+example/build/
