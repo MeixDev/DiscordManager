@@ -7,11 +7,8 @@ repository: https://github.com/MeixDev/DiscordManager/
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
 
   http: ^0.12.2
   meta: ^1.1.8
