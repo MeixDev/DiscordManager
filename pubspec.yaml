@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
 
   http: ^0.12.2
-  meta: ^1.2.2
+  meta: ^1.1.8
   url_launcher: ^5.5.0
   uni_links: ^0.4.0
   crypto: ^2.1.4
