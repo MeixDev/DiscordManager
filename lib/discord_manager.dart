@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'dart:io' show Platform;
 import 'package:crypto/crypto.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart';
@@ -56,12 +55,7 @@ extension ScopeToString on DiscordScope {
 }
 
 /// An enum of the available formats for images from Discord CDN.
-enum DiscordImageFormat {
-  JPEG,
-  PNG,
-  WEBP,
-  GIF
-}
+enum DiscordImageFormat { JPEG, PNG, WEBP, GIF }
 
 extension FormatToString on DiscordImageFormat {
   /// The lowercase headless version of the format
@@ -73,15 +67,11 @@ extension FormatToString on DiscordImageFormat {
   /// ```
   /// png
   /// ```
-  String get str =>
-      this.toString().split('.').last.toLowerCase();
+  String get str => this.toString().split('.').last.toLowerCase();
 }
 
 /// An enum to select which type of Token to revoke through /token/revoke with token_type_hint
-enum DiscordTokenType {
-  Access_Token,
-  Refresh_Token
-}
+enum DiscordTokenType { Access_Token, Refresh_Token }
 
 extension TokenToString on DiscordTokenType {
   /// The lowercase headless version of the token type
@@ -93,8 +83,7 @@ extension TokenToString on DiscordTokenType {
   /// ```
   /// access_token
   /// ```
-  String get str =>
-      this.toString().split('.').last.toLowerCase();
+  String get str => this.toString().split('.').last.toLowerCase();
 }
 
 /// A manager for everything related to Discord's OAuth2 Flow.
@@ -298,16 +287,22 @@ class DiscordManager {
 
   /// A function calling the /token endpoint. Returns true if the credentials were retrieved and false in case the request failed.
   Future<bool> revokeToken(DiscordTokenType type) async {
-
     Map<String, String> body = {
-        'token': type == DiscordTokenType.Access_Token ? credentials.accessToken : credentials.refreshToken,
-        'token_type_hint': type.str,
-      };
+      'token': type == DiscordTokenType.Access_Token
+          ? credentials.accessToken
+          : credentials.refreshToken,
+      'token_type_hint': type.str,
+    };
     print("Map: " + body.toString());
 
     Response response;
     try {
-      response = await _client.post(revokeEndpoint, headers: {'Authorization': '${credentials.tokenType} ${credentials.accessToken}'}, body: body);
+      response = await _client.post(revokeEndpoint,
+          headers: {
+            'Authorization':
+                '${credentials.tokenType} ${credentials.accessToken}'
+          },
+          body: body);
     } catch (e) {
       print(e.toString());
       return false;
@@ -328,24 +323,31 @@ class DiscordManager {
   }
 
   /// Returns a list of DiscordPartialGuild received from /users/@me/guilds.
-  Future<List<DiscordPartialGuild>> getUsersMeGuilds({String before, String after, int limit}) async {
+  Future<List<DiscordPartialGuild>> getUsersMeGuilds(
+      {String before, String after, int limit}) async {
     String url = baseEndpoint + '/users/@me/guilds';
     bool hasQuery = false;
     if (before != null) {
-      if (!hasQuery) url += "?before=";
-      else url += "&before=";
+      if (!hasQuery)
+        url += "?before=";
+      else
+        url += "&before=";
       hasQuery = true;
       url += Uri.encodeComponent(before);
     }
     if (after != null) {
-      if (!hasQuery) url += "?after=";
-      else url += "&after=";
+      if (!hasQuery)
+        url += "?after=";
+      else
+        url += "&after=";
       hasQuery = true;
       url += Uri.encodeComponent(after);
     }
     if (limit != null) {
-      if (!hasQuery) url += "?limit=";
-      else url += "&limit=";
+      if (!hasQuery)
+        url += "?limit=";
+      else
+        url += "&limit=";
       hasQuery = true;
       url += Uri.encodeComponent(limit.toString());
     }
@@ -366,10 +368,11 @@ class DiscordManager {
   Future<Response> get(String apiEndpoint) async {
     if (credentials == null)
       throw DiscordCredentialsNotSetException("Invalid credentials in get");
-    if (credentials.expireInstant.isAfter(DateTime.now()))
-      await refreshToken();
+    if (credentials.expireInstant.isAfter(DateTime.now())) await refreshToken();
     try {
-      return _client.get(apiEndpoint, headers: {'Authorization': '${credentials.tokenType} ${credentials.accessToken}'});
+      return _client.get(apiEndpoint, headers: {
+        'Authorization': '${credentials.tokenType} ${credentials.accessToken}'
+      });
     } catch (e) {
       print(e.toString());
     }
@@ -385,21 +388,37 @@ class DiscordManager {
       format = DiscordImageFormat.PNG;
       // throw DiscordUnsupportedImageFormatException("Default User Avatar is only available as a PNG");
       final int discriminator = int.parse(discordUser.discriminator) % 5;
-      return cndEndpoint + "embed/avatars/" + discriminator.toString() + format.str;
+      return cndEndpoint +
+          "embed/avatars/" +
+          discriminator.toString() +
+          format.str;
     }
     if (format == DiscordImageFormat.GIF) {
       // Default to PNG if the image can't be used as a GIF
       if (!discordUser.avatar.contains("a_")) format = DiscordImageFormat.PNG;
     }
-    return cndEndpoint + "avatars/" + discordUser.id + "/" + discordUser.avatar + "." + format.str;
+    return cndEndpoint +
+        "avatars/" +
+        discordUser.id +
+        "/" +
+        discordUser.avatar +
+        "." +
+        format.str;
   }
 
   /// Returns the string of the URL of the icon of a Discord Guild. A DiscordPartialGuild item must be used as a parameter.
-  String buildGuildIconUrl(DiscordPartialGuild guild, {DiscordImageFormat format = DiscordImageFormat.PNG}) {
+  String buildGuildIconUrl(DiscordPartialGuild guild,
+      {DiscordImageFormat format = DiscordImageFormat.PNG}) {
     if (format == DiscordImageFormat.GIF) {
       // Default to PNG if the image can't be used as a GIF
       if (!guild.icon.contains("a_")) format = DiscordImageFormat.PNG;
     }
-    return cndEndpoint + "icons/" + guild.id + "/" + guild.icon + "." + format.str;
+    return cndEndpoint +
+        "icons/" +
+        guild.id +
+        "/" +
+        guild.icon +
+        "." +
+        format.str;
   }
 }

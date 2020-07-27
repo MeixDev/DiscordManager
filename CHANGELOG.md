@@ -1,3 +1,8 @@
+# 0.1.0+3
+
+* Formatted discord_manager.dart with dartfmt
+* Removed unused imports for real this time.
+
 # 0.1.0+2
 
 * Updated dependencies : Removed Flutter dependency
