@@ -1,8 +1,9 @@
 name: discord_manager
-description: Helper for Discord's OAuth2 implementation
+description: Manager for Discord's OAuth2 implementation, non-dependant of any backend or database.
 version: 0.1.0
-author: Meï "MeixDev"
+author: Meï "MeixDev" <main.meixdev@gmail.com>
 homepage: https://github.com/MeixDev
+repository: https://github.com/MeixDev/DiscordManager/
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
