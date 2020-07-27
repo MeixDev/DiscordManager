@@ -7,6 +7,7 @@ The sources are fully documented if needed.
 ## Dependencies
 
 - [http](https://pub.dev/packages/http) : Used to make the HTTP Requests, and works independently of the platform.
+- [meta](https://pub.dev/packages/meta) : Used for code clarity such as `@required` declarations.
 - [crypto](https://pub.dev/packages/crypto) : Necessary to create some the code_challenge used in the OAuth2 PKCE implementation.
 - [url_launcher](https://pub.dev/packages/url_launcher) : Used to launch URLs from any platform, which is necessary to get the authorization grant code.
 - [uni_links](https://pub.dev/packages/uni_links) : Supports the App/Deep Links on Android and Universal Links/Custom URL schemes on iOS. 
