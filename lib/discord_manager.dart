@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'dart:io' show Platform;
 import 'package:crypto/crypto.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart';
@@ -11,7 +12,6 @@ import 'package:discord_manager/utils/discord_utils.dart';
 import 'package:discord_manager/utils/exceptions.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links/uni_links.dart';
-import 'dart:io' show Platform;
 
 import 'models/discord_credentials.dart';
 

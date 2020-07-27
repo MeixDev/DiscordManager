@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class DiscordCannotLaunchUrlException implements Exception {
   final String message;
   const DiscordCannotLaunchUrlException([this.message]);
