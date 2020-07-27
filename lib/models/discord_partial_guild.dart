@@ -2,10 +2,13 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 
 /// Returns a list of DiscordPartialGuild from a JSON String list.
-List<DiscordPartialGuild> discordPartialGuildFromJson(String str) => List<DiscordPartialGuild>.from(json.decode(str).map((x) => DiscordPartialGuild.fromJson(x)));
+List<DiscordPartialGuild> discordPartialGuildFromJson(String str) =>
+    List<DiscordPartialGuild>.from(
+        json.decode(str).map((x) => DiscordPartialGuild.fromJson(x)));
 
 /// Transforms a list of DiscordPartialGuild to a JSON String list.
-String discordPartialGuildToJson(List<DiscordPartialGuild> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String discordPartialGuildToJson(List<DiscordPartialGuild> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 /// The model of a Partial Guild Object from Discord.
 ///
@@ -43,30 +46,48 @@ class DiscordPartialGuild {
   final String permissionsNew;
 
   /// Returns a new DiscordPartialGuild from a JSON-translated Map<String, dynamic>.
-  factory DiscordPartialGuild.fromJson(Map<String, dynamic> json) => DiscordPartialGuild(
-    id: json["id"],
-    name: json["name"],
-    icon: json["icon"] == null ? null : json["icon"],
-    owner: json["owner"],
-    permissions: json["permissions"],
-    features: List<Feature>.from(json["features"].map((x) => featureValues.map[x])),
-    permissionsNew: json["permissions_new"],
-  );
+  factory DiscordPartialGuild.fromJson(Map<String, dynamic> json) =>
+      DiscordPartialGuild(
+        id: json["id"],
+        name: json["name"],
+        icon: json["icon"] == null ? null : json["icon"],
+        owner: json["owner"],
+        permissions: json["permissions"],
+        features: List<Feature>.from(
+            json["features"].map((x) => featureValues.map[x])),
+        permissionsNew: json["permissions_new"],
+      );
 
   /// Transforms a DiscordPartialGuild to a JSON-translatable Map<String, dynamic>.
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "icon": icon == null ? null : icon,
-    "owner": owner,
-    "permissions": permissions,
-    "features": List<dynamic>.from(features.map((x) => featureValues.reverse[x])),
-    "permissions_new": permissionsNew,
-  };
+        "id": id,
+        "name": name,
+        "icon": icon == null ? null : icon,
+        "owner": owner,
+        "permissions": permissions,
+        "features":
+            List<dynamic>.from(features.map((x) => featureValues.reverse[x])),
+        "permissions_new": permissionsNew,
+      };
 }
 
 /// The features a server can add, mostly through Discord Partnership, or through Discord Boosting.
-enum Feature { NEWS, VIP_REGIONS, BANNER, ANIMATED_ICON, INVITE_SPLASH, PARTNERED, VANITY_URL, DISCOVERABLE, WELCOME_SCREEN_ENABLED, COMMUNITY, ENABLED_DISCOVERABLE_BEFORE, COMMERCE, FEATURABLE, VERIFIED }
+enum Feature {
+  NEWS,
+  VIP_REGIONS,
+  BANNER,
+  ANIMATED_ICON,
+  INVITE_SPLASH,
+  PARTNERED,
+  VANITY_URL,
+  DISCOVERABLE,
+  WELCOME_SCREEN_ENABLED,
+  COMMUNITY,
+  ENABLED_DISCOVERABLE_BEFORE,
+  COMMERCE,
+  FEATURABLE,
+  VERIFIED
+}
 
 /// Instance of EnumValues which converts Strings to the Feature Enum.
 final featureValues = EnumValues({

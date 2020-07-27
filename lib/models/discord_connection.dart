@@ -2,10 +2,13 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 
 /// Returns a list of DiscordConnection from a JSON String list.
-List<DiscordConnection> discordConnectionFromJson(String str) => List<DiscordConnection>.from(json.decode(str).map((x) => DiscordConnection.fromJson(x)));
+List<DiscordConnection> discordConnectionFromJson(String str) =>
+    List<DiscordConnection>.from(
+        json.decode(str).map((x) => DiscordConnection.fromJson(x)));
 
 /// Transforms a list of DiscordPartialGuild to a JSON String list.
-String discordConnectionToJson(List<DiscordConnection> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String discordConnectionToJson(List<DiscordConnection> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 /// The model of a third-party Connection from Discord.
 ///
@@ -43,24 +46,25 @@ class DiscordConnection {
   final bool verified;
 
   /// Returns a new DiscordConnection from a JSON-translated Map<String, dynamic>.
-  factory DiscordConnection.fromJson(Map<String, dynamic> json) => DiscordConnection(
-    type: json["type"],
-    id: json["id"],
-    name: json["name"],
-    visibility: json["visibility"],
-    friendSync: json["friend_sync"],
-    showActivity: json["show_activity"],
-    verified: json["verified"],
-  );
+  factory DiscordConnection.fromJson(Map<String, dynamic> json) =>
+      DiscordConnection(
+        type: json["type"],
+        id: json["id"],
+        name: json["name"],
+        visibility: json["visibility"],
+        friendSync: json["friend_sync"],
+        showActivity: json["show_activity"],
+        verified: json["verified"],
+      );
 
   /// Transforms a DiscordConnection to a JSON-translatable Map<String, dynamic>.
   Map<String, dynamic> toJson() => {
-    "type": type,
-    "id": id,
-    "name": name,
-    "visibility": visibility,
-    "friend_sync": friendSync,
-    "show_activity": showActivity,
-    "verified": verified,
-  };
+        "type": type,
+        "id": id,
+        "name": name,
+        "visibility": visibility,
+        "friend_sync": friendSync,
+        "show_activity": showActivity,
+        "verified": verified,
+      };
 }

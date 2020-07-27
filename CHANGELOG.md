@@ -1,3 +1,7 @@
+# 0.1.0+4
+
+* Reformated more files with dartfmt
+
 # 0.1.0+3
 
 * Formatted discord_manager.dart with dartfmt

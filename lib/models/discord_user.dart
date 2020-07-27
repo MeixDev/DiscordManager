@@ -68,44 +68,45 @@ class DiscordUser {
   final bool system;
 
   /// Returns a new DiscordUser from a JSON String.
-  factory DiscordUser.fromRawJson(String str) => DiscordUser.fromJson(json.decode(str));
+  factory DiscordUser.fromRawJson(String str) =>
+      DiscordUser.fromJson(json.decode(str));
 
   /// Transforms a DiscordUser to a JSON String.
   String toRawJson() => json.encode(toJson());
 
   /// Returns a new DiscordUser from a JSON-translated Map<String, dynamic>.
   factory DiscordUser.fromJson(Map<String, dynamic> json) => DiscordUser(
-    id: json["id"],
-    username: json["username"],
-    avatar: json["avatar"],
-    discriminator: json["discriminator"],
-    publicFlags: json["public_flags"]?? null,
-    flags: json["flags"]?? null,
-    email: json["email"]?? null,
-    verified: json["verified"]?? null,
-    locale: json["locale"]?? null,
-    mfaEnabled: json["mfa_enabled"]?? null,
-    premiumType: json["premium_type"]?? null,
-    bot: json["bot"]?? null,
-    system: json["system"]?? null,
-  );
+        id: json["id"],
+        username: json["username"],
+        avatar: json["avatar"],
+        discriminator: json["discriminator"],
+        publicFlags: json["public_flags"] ?? null,
+        flags: json["flags"] ?? null,
+        email: json["email"] ?? null,
+        verified: json["verified"] ?? null,
+        locale: json["locale"] ?? null,
+        mfaEnabled: json["mfa_enabled"] ?? null,
+        premiumType: json["premium_type"] ?? null,
+        bot: json["bot"] ?? null,
+        system: json["system"] ?? null,
+      );
 
   /// Transforms a DiscordUser to a JSON-translatable Map<String, dynamic>.
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "username": username,
-    "avatar": avatar,
-    "discriminator": discriminator,
-    "public_flags": publicFlags?? null,
-    "flags": flags?? null,
-    "email": email?? null,
-    "verified": verified?? null,
-    "locale": locale?? null,
-    "mfa_enabled": mfaEnabled?? null,
-    "premium_type": premiumType?? null,
-    "bot": bot?? null,
-    "system": system?? null,
-  };
+        "id": id,
+        "username": username,
+        "avatar": avatar,
+        "discriminator": discriminator,
+        "public_flags": publicFlags ?? null,
+        "flags": flags ?? null,
+        "email": email ?? null,
+        "verified": verified ?? null,
+        "locale": locale ?? null,
+        "mfa_enabled": mfaEnabled ?? null,
+        "premium_type": premiumType ?? null,
+        "bot": bot ?? null,
+        "system": system ?? null,
+      };
 
   @override
   String toString() {
