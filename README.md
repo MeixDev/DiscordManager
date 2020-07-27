@@ -60,5 +60,4 @@ DiscordManager wraps the following API calls:
 ## TODO
 
 - Test the revokeToken() method.
-- Add Example Flutter App.
 - Make the [uni_links](https://pub.dev/packages/uni_links) dependency a mobile-only dependency and do a web-based implementation of the getAuthorizationGrant() function.

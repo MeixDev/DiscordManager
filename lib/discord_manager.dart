@@ -14,6 +14,13 @@ import 'package:uni_links/uni_links.dart';
 
 import 'models/discord_credentials.dart';
 
+export 'package:discord_manager/models/discord_connection.dart';
+export 'package:discord_manager/models/discord_credentials.dart';
+export 'package:discord_manager/models/discord_partial_guild.dart';
+export 'package:discord_manager/models/discord_user.dart';
+export 'package:discord_manager/utils/discord_utils.dart';
+export 'package:discord_manager/utils/exceptions.dart';
+
 /// A translation of Discord's OAuth2 Scopes as Dart-codified values.
 ///
 /// Refer to Discord's documentation for the meaning of each Scope:

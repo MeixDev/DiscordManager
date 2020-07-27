@@ -1,3 +1,8 @@
+# 0.2.0
+
+* Added exports to discord_manager.dart to expose all classes.
+* Added example app (With [getx](https://pub.dev/packages/get) as the State Manager)
+
 # 0.1.0+5
 
 * Removed most non-error prints.

@@ -1,6 +1,6 @@
 name: discord_manager
 description: Manager for Discord's OAuth2 implementation, non-dependant of any backend or database.
-version: 0.1.0+5
+version: 0.2.0
 author: Meï "MeixDev" <dev.meixdev@gmail.com>
 homepage: https://github.com/MeixDev
 repository: https://github.com/MeixDev/DiscordManager/
