@@ -186,8 +186,6 @@ class DiscordManager {
         Uri.encodeComponent(codeChallenge) +
         "&code_challenge_method=S256";
 
-    print(url);
-
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -196,7 +194,6 @@ class DiscordManager {
 
     bool _returnedGrant = false;
     await getUriLinksStream().firstWhere((Uri uri) {
-      print(uri.toString());
       if (uri.toString().contains("?code=")) {
         _grantCode = uri.queryParameters["code"];
         _returnedGrant = true;
@@ -245,11 +242,9 @@ class DiscordManager {
         'scope': scopesRaw,
         'code_verifier': _codeVerifier,
       };
-    print("Map: " + body.toString());
 
     Response response;
     try {
-      print("Code: " + _grantCode);
       response = await _client.post(tokenEndpoint, body: body);
     } catch (e) {
       print(e.toString());
@@ -257,9 +252,7 @@ class DiscordManager {
     }
 
     if (response != null) {
-      print(response.body);
       credentials = DiscordCredentials.fromRawJson(response.body);
-      print(credentials.toString());
       return true;
     }
     return false;
@@ -293,7 +286,6 @@ class DiscordManager {
           : credentials.refreshToken,
       'token_type_hint': type.str,
     };
-    print("Map: " + body.toString());
 
     Response response;
     try {
@@ -308,10 +300,7 @@ class DiscordManager {
       return false;
     }
 
-    if (response != null) {
-      print(response.body);
-      return true;
-    }
+    if (response != null) return true;
     return false;
   }
 
@@ -351,7 +340,6 @@ class DiscordManager {
       hasQuery = true;
       url += Uri.encodeComponent(limit.toString());
     }
-    print(url);
     Response response = await get(url);
     return discordPartialGuildFromJson(response.body);
   }
