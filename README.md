@@ -1,6 +1,6 @@
 # DiscordManager
 
-![Pub Version](https://img.shields.io/pub/v/discord_manager?color=blue&logo=flutter)
+![Pub Version](https://img.shields.io/pub/v/discord_manager?color=blue&logo=dart)
 
 Helper for Discord OAuth2.
 
